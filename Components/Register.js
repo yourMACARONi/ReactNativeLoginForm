@@ -131,9 +131,9 @@ const Register = ({navigation}) => {
               }}
             >
               <TextInput
-                placeholder="Enter you password"
+                placeholder="Enter your password"
                 placeholderTextColor={COLORS.black}
-                secureTextEntry={passwordShown}
+                secureTextEntry={!passwordShown}
                 style={{
                   width: "100%",
                 }}
@@ -145,7 +145,7 @@ const Register = ({navigation}) => {
                   right: 12,
                 }}
               >
-                {passwordShown == true ? (
+                {passwordShown == false ? (
                   <Ionicons name="eye-off" size={24} color={COLORS.black} />
                 ) : (
                   <Ionicons name="eye" size={24} color={COLORS.black} />
@@ -178,9 +178,9 @@ const Register = ({navigation}) => {
               }}
             >
               <TextInput
-                placeholder="Re-Enter you password"
+                placeholder="Re-Enter your password"
                 placeholderTextColor={COLORS.black}
-                secureTextEntry={passwordShown}
+                secureTextEntry={!passwordShown}
                 style={{
                   width: "100%",
                 }}
@@ -192,7 +192,7 @@ const Register = ({navigation}) => {
                   right: 12,
                 }}
               >
-                {passwordShown == true ? (
+                {passwordShown == false ? (
                   <Ionicons name="eye-off" size={24} color={COLORS.black} />
                 ) : (
                   <Ionicons name="eye" size={24} color={COLORS.black} />

@@ -10,11 +10,11 @@ const Welcome = ({ navigation }) => {
       style={{
         flex: 1,
       }}
-      colors={[COLORS.secondary, COLORS.primary]}
+      colors={[COLORS.orange, COLORS.primary]}
     >
       <View style={{ flex: 1, alignContent: "center" }}>
         <View>
-          <Image source={require("../assets/Logo.png")}></Image>
+          <Image source={require("../assets/FQTxt.png")}></Image>
         </View>
         {/* content */}
         <View

@@ -94,9 +94,9 @@ const Login = ({navigation}) => {
               }}
             >
               <TextInput
-                placeholder="Enter you password"
+                placeholder="Enter your password"
                 placeholderTextColor={COLORS.black}
-                secureTextEntry={passwordShown}
+                secureTextEntry={!passwordShown}
                 style={{
                   width: "100%",
                 }}
@@ -108,7 +108,7 @@ const Login = ({navigation}) => {
                   right: 12,
                 }}
               >
-                {passwordShown == true ? (
+                {passwordShown == false ? (
                   <Ionicons name="eye-off" size={24} color={COLORS.black} />
                 ) : (
                   <Ionicons name="eye" size={24} color={COLORS.black} />
@@ -141,9 +141,9 @@ const Login = ({navigation}) => {
               }}
             >
               <TextInput
-                placeholder="Re-Enter you password"
+                placeholder="Re-Enter your password"
                 placeholderTextColor={COLORS.black}
-                secureTextEntry={passwordShown}
+                secureTextEntry={!passwordShown}
                 style={{
                   width: "100%",
                 }}
@@ -155,7 +155,7 @@ const Login = ({navigation}) => {
                   right: 12,
                 }}
               >
-                {passwordShown == true ? (
+                {passwordShown == false ? (
                   <Ionicons name="eye-off" size={24} color={COLORS.black} />
                 ) : (
                   <Ionicons name="eye" size={24} color={COLORS.black} />
@@ -180,7 +180,25 @@ const Login = ({navigation}) => {
             <Text style={{fontSize: 16}}>Remember me</Text>
           </View>
 
-          <Button
+          <View style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    marginVertical: 22
+                }}>
+                    <Text style={{ fontSize: 16, color: COLORS.black }}>Forgot Password?</Text>
+                    <Pressable
+                        onPress={() => navigation.navigate("Recovery")}
+                    >
+                        <Text style={{
+                            fontSize: 16,
+                            color: COLORS.primary,
+                            fontWeight: "bold",
+                            marginLeft: 6
+                        }}>Click Here</Text>
+                    </Pressable>
+                </View>
+
+          <Button onPress={() => navigation.navigate("Home")}
             title="Sign In"
             filled
             style={{
@@ -325,7 +343,6 @@ const Login = ({navigation}) => {
               marginTop: 30
             }}
             >
-
             </Button>
           </View>
         </View>
