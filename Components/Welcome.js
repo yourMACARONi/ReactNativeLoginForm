@@ -14,14 +14,14 @@ const Welcome = ({ navigation }) => {
     >
       <View style={{ flex: 1, alignContent: "center" }}>
         <View>
-          <Image source={require("../assets/FQTxt.png")}></Image>
+          <Image source={require("../assets/Logo.jpg")}></Image>
         </View>
         {/* content */}
         <View
           style={{
             paddingHorizontal: 22,
             position: "absolute",
-            top: 340,
+            top: 240,
             width: "100%",
           }}
         >
@@ -29,7 +29,7 @@ const Welcome = ({ navigation }) => {
             style={{
               fontSize: 50,
               fontWeight: 800,
-              color: COLORS.white,
+              color: COLORS.black,
             }}
           >
             Let's Get
@@ -38,7 +38,7 @@ const Welcome = ({ navigation }) => {
             style={{
               fontSize: 45,
               fontWeight: 800,
-              color: COLORS.white,
+              color: COLORS.black,
             }}
           >
             Started
@@ -48,7 +48,7 @@ const Welcome = ({ navigation }) => {
             <Text
               style={{
                 fontSize: 16,
-                color: COLORS.white,
+                color: COLORS.black,
                 textAlign: "justify",
                 top: 10,
               }}

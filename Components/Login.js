@@ -30,7 +30,7 @@ const Login = ({navigation}) => {
   <Text
     style={{
       fontSize: 60,
-      fontWeight: "bold",
+      fontWeight: "Extrabold",
       marginVertical: 12,
       marginHorizontal: 90,
       color: COLORS.black,
@@ -89,7 +89,7 @@ const Login = ({navigation}) => {
             <Text
               style={{
                 fontSize: 20,
-                fontWeight: 400,
+                fontWeight: 700,
                 marginVertical: 8,
               }}
             >
