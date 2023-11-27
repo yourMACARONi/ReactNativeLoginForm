@@ -12,17 +12,32 @@ const Recover = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
-        <View>
+        <View >
+
+        <View style={{flexDirection: 'row'}} >
+
+          <TouchableOpacity 
+          onPress={() => navigation.navigate("Login")}
+          style={{marginTop: 20,}} >
+        <Ionicons name="arrow-undo" size={24} color={COLORS.black}/>
+
+        </TouchableOpacity>
+           
+           
+          
           <Text
             style={{
-              fontSize: 50,
+              fontSize: 40,
               fontWeight: "bold",
               marginVertical: 12,
+              marginHorizontal: 25,
               color: COLORS.black,
             }}
           >
             Account Recovery
           </Text>
+        </View>
+
         </View>
         <View
           style={{
@@ -103,6 +118,7 @@ const Recover = ({navigation}) => {
           </View>
 
           <Button
+            onPress={() => console.log("Pressed1")}
             title="Recover Account"
             filled
             style={{
@@ -116,17 +132,7 @@ const Recover = ({navigation}) => {
             
           
         </View>
-        <View>
-            <Button title="Main Screen" 
-            onPress={() => navigation.navigate("Welcome")}
-            style={{
-              width: 130,
-              height: 50,
-              marginTop: 20,
-            }}
-            >
-            </Button>
-          </View>
+        
     </SafeAreaView>
   );
 };

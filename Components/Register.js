@@ -14,18 +14,33 @@ const Register = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
-        <View>
-          <Text
-            style={{
-              fontSize: 50,
-              fontWeight: "bold",
-              marginVertical: 12,
-              color: COLORS.black,
-            }}
-          >
-            Sign Up
-          </Text>
-        </View>
+      <View >
+
+<View style={{flexDirection: 'row'}} >
+
+  <TouchableOpacity 
+  onPress={() => navigation.navigate("Welcome")}
+  style={{marginTop: 20,}} >
+<Ionicons name="arrow-undo" size={24} color={COLORS.black}/>
+
+</TouchableOpacity>
+   
+   
+  
+  <Text
+    style={{
+      fontSize: 60,
+      fontWeight: "bold",
+      marginVertical: 12,
+      marginHorizontal: 85,
+      color: COLORS.black,
+    }}
+  >
+    Sign Up
+  </Text>
+</View>
+
+</View>
         <View
           style={{
             marginBottom: 1,
@@ -352,17 +367,7 @@ const Register = ({navigation}) => {
 
           </View>
         </View>
-        <View>
-            <Button title="Main Screen" 
-            onPress={() => navigation.navigate("Welcome")}
-            style={{
-              width: 130,
-              height: 50,
-              marginTop: 20,
-            }}
-            >
-            </Button>
-          </View>
+        
       </View>
     </SafeAreaView>
   );

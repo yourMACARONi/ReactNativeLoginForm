@@ -14,18 +14,33 @@ const Login = ({navigation}) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
-        <View>
-          <Text
-            style={{
-              fontSize: 50,
-              fontWeight: "bold",
-              marginVertical: 12,
-              color: COLORS.black,
-            }}
-          >
-            Sign In
-          </Text>
-        </View>
+      <View >
+
+<View style={{flexDirection: 'row'}} >
+
+  <TouchableOpacity 
+  onPress={() => navigation.navigate("Welcome")}
+  style={{marginTop: 20,}} >
+<Ionicons name="arrow-undo" size={24} color={COLORS.black}/>
+
+</TouchableOpacity>
+   
+   
+  
+  <Text
+    style={{
+      fontSize: 60,
+      fontWeight: "bold",
+      marginVertical: 12,
+      marginHorizontal: 90,
+      color: COLORS.black,
+    }}
+  >
+    Sign In
+  </Text>
+</View>
+
+</View>
         
 
           <View
@@ -168,7 +183,7 @@ const Login = ({navigation}) => {
             style={{
               flexDirection: "row",
               marginVertical: 6,
-              marginTop: 15
+              marginTop: 10
             }}
           >
             <Checkbox
@@ -182,7 +197,6 @@ const Login = ({navigation}) => {
 
           <View style={{
                     flexDirection: "row",
-                    justifyContent: "center",
                     marginVertical: 22
                 }}>
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Forgot Password?</Text>
@@ -212,7 +226,7 @@ const Login = ({navigation}) => {
               flexDirection: "column",
               alignItems: "center",
               marginVertical: 20,
-              marginTop: 50
+              marginTop: 20
             }}
           >
            
@@ -229,7 +243,7 @@ const Login = ({navigation}) => {
               style={{
                 flexDirection: "row",
                 justifyContent: "center",
-                marginTop: 30
+                marginTop: 20
               }}
             >
               <TouchableOpacity
@@ -334,17 +348,7 @@ const Login = ({navigation}) => {
 
           </View>
 
-          <View>
-            <Button title="Main Screen" 
-            onPress={() => navigation.navigate("Welcome")}
-            style={{
-              width: 130,
-              height: 50,
-              marginTop: 30
-            }}
-            >
-            </Button>
-          </View>
+         
         </View>
     </SafeAreaView>
   );
