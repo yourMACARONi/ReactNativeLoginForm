@@ -14,7 +14,7 @@ const Home = ({ navigation }) => {
     >
       <View style={{ flex: 1, alignContent: "center" }}>
         <View>
-          <Image source={require("../assets/Creatify.png")}></Image>
+          <Image source={require("../assets/FQ.png")}></Image>
         </View>
         {/* content */}
        

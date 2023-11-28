@@ -30,7 +30,7 @@ const Register = ({navigation}) => {
   <Text
     style={{
       fontSize: 60,
-      fontWeight: "bold",
+      fontWeight: "extrabold",
       marginVertical: 12,
       marginHorizontal: 85,
       color: COLORS.black,
@@ -359,7 +359,7 @@ const Register = ({navigation}) => {
                         <Text style={{
                             fontSize: 16,
                             color: COLORS.primary,
-                            fontWeight: "bold",
+                            fontWeight: "extrabold",
                             marginLeft: 6
                         }}>Login</Text>
                     </Pressable>
