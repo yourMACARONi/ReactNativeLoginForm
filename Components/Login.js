@@ -29,7 +29,7 @@ const Login = ({navigation}) => {
   
   <Text
     style={{
-      fontSize: 60,
+      fontSize: 30,
       fontWeight: "bold",
       marginVertical: 12,
       marginHorizontal: 90,

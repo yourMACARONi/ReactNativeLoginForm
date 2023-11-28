@@ -12,9 +12,9 @@ const Home = ({ navigation }) => {
       }}
       colors={[COLORS.orange, COLORS.primary]}
     >
-      <View style={{ flex: 1, alignContent: "center" }}>
+      <View style={{ flex: 1, alignItems: "center" }}>
         <View>
-          <Image source={require("../assets/FQ.png")}></Image>
+          <Image source={require("../assets/Creatify.png")}></Image>
         </View>
         {/* content */}
        
@@ -24,7 +24,7 @@ const Home = ({ navigation }) => {
             onPress={() => navigation.navigate("Login")}
             style={{
               marginTop: 70,
-              width: "100",
+              width: "300",
             }}
           />
 

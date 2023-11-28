@@ -12,33 +12,33 @@ const Welcome = ({ navigation }) => {
       }}
       colors={[COLORS.orange, COLORS.primary]}
     >
-      <View style={{ flex: 1, alignContent: "center" }}>
+      <View style={{ flex: 1, alignItems: "center" }}>
         <View>
-          <Image source={require("../assets/FQTxt.png")}></Image>
+          <Image source={require("../assets/Logo.jpg")}></Image>
         </View>
         {/* content */}
         <View
           style={{
-            paddingHorizontal: 22,
+            paddingHorizontal: 5,
             position: "absolute",
-            top: 340,
+            top: 330,
             width: "100%",
           }}
         >
           <Text
             style={{
-              fontSize: 50,
-              fontWeight: 800,
-              color: COLORS.white,
+              fontSize: 35,
+              fontWeight: 700,
+              color: COLORS.black,
             }}
           >
             Let's Get
           </Text>
           <Text
             style={{
-              fontSize: 45,
-              fontWeight: 800,
-              color: COLORS.white,
+              fontSize: 35,
+              fontWeight: 700,
+              color: COLORS.black,
             }}
           >
             Started
@@ -47,10 +47,10 @@ const Welcome = ({ navigation }) => {
           <View>
             <Text
               style={{
-                fontSize: 16,
-                color: COLORS.white,
+                fontSize: 15,
+                color: COLORS.black,
                 textAlign: "justify",
-                top: 10,
+                top: 9,
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -62,7 +62,7 @@ const Welcome = ({ navigation }) => {
             title="Join Now"
             onPress={() => navigation.navigate("Register")}
             style={{
-              marginTop: 70,
+              marginTop: 40,
               width: "100%",
             }}
           />
@@ -87,7 +87,7 @@ const Welcome = ({ navigation }) => {
                 style={{
                   fontSize: 16,
                   color: COLORS.secondary,
-                  fontWeight: "bold",
+                  fontWeight: "extrabold",
                   marginLeft: 4,
                 }}
               >
