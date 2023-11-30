@@ -10,27 +10,26 @@ const Home = ({ navigation }) => {
       style={{
         flex: 1,
       }}
-      colors={[COLORS.orange, COLORS.primary]}
+      colors={[COLORS.white, COLORS.white]}
     >
-      <View style={{ flex: 1, alignItems: "center" }}>
-        <View>
-          <Image source={require("../assets/Creatify.png")}></Image>
-        </View>
-        {/* content */}
-       
-
-          <Button
-            title="Log Out"
-            onPress={() => navigation.navigate("Login")}
-            style={{
-              marginTop: 70,
-              width: "300",
-            }}
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ marginBottom: 20 }}>
+          <Image
+            source={require("../assets/Creatify.png")}
+            style={{ width: 500, height: 500, resizeMode: "contain" }}
           />
-
-          
         </View>
-      
+
+        {/* content */}
+        <Button
+          title="Log Out"
+          onPress={() => navigation.navigate("Login")}
+          style={{
+            marginTop: 20,
+            width: 150, // Adjust the width as needed
+          }}
+        />
+      </View>
     </LinearGradient>
   );
 };

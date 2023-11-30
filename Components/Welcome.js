@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import COLORS from "../Constants/colors";
@@ -9,92 +9,89 @@ const Welcome = ({ navigation }) => {
     <LinearGradient
       style={{
         flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
       }}
-      colors={[COLORS.orange, COLORS.primary]}
+      colors={[COLORS.grey, COLORS.black]}
     >
-      <View style={{ flex: 1, alignItems: "center" }}>
+      {/* content */}
+      <View
+        style={{
+          paddingHorizontal: 10,
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 40, // Updated font size
+            fontWeight: "bold", // Updated font weight
+            color: COLORS.primary, // Updated text color
+            marginBottom: 10, // Added margin bottom for spacing
+          }}
+        >
+          Let's Get
+        </Text>
+        <Text
+          style={{
+            fontSize: 40, // Updated font size
+            fontWeight: "bold", // Updated font weight
+            color: COLORS.primary, // Updated text color
+            marginBottom: 20, // Added more margin bottom for spacing
+          }}
+        >
+          Started
+        </Text>
+
         <View>
-          <Image source={require("../assets/Logo.jpg")}></Image>
+          <Text
+            style={{
+              fontSize: 18, // Updated font size
+              color: COLORS.white, // Updated text color
+              textAlign: "center", // Centered text
+              marginBottom: 20, // Added margin bottom for spacing
+            }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
-        {/* content */}
+
+        <Button
+          title="Join Now"
+          onPress={() => navigation.navigate("Register")}
+          style={{
+            marginTop: 40,
+            width: "100%",
+          }}
+        />
+
         <View
           style={{
-            paddingHorizontal: 5,
-            position: "absolute",
-            top: 330,
-            width: "100%",
+            flexDirection: "row",
+            marginTop: 12,
+            justifyContent: "center",
           }}
         >
           <Text
             style={{
-              fontSize: 35,
-              fontWeight: 700,
-              color: COLORS.black,
+              fontSize: 18, // Updated font size
+              color: COLORS.white, // Updated text color
+              marginRight: 5, // Added margin right for spacing
             }}
           >
-            Let's Get
+            Already have an Account?
           </Text>
-          <Text
-            style={{
-              fontSize: 35,
-              fontWeight: 700,
-              color: COLORS.black,
-            }}
-          >
-            Started
-          </Text>
-
-          <View>
+          <Pressable onPress={() => navigation.navigate("Login")}>
             <Text
               style={{
-                fontSize: 15,
-                color: COLORS.black,
-                textAlign: "justify",
-                top: 9,
+                fontSize: 17, // Updated font size
+                color: COLORS.green, // Updated text color
+                fontWeight: "bold", // Updated font weight
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Login Here!
             </Text>
-          </View>
-
-          <Button
-            title="Join Now"
-            onPress={() => navigation.navigate("Register")}
-            style={{
-              marginTop: 40,
-              width: "100%",
-            }}
-          />
-
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 12,
-              justifyContent: "center",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 16,
-                color: COLORS.white,
-              }}
-            >
-              Already have an Account?
-            </Text>
-            <Pressable onPress={() => navigation.navigate("Login")}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: COLORS.secondary,
-                  fontWeight: "extrabold",
-                  marginLeft: 4,
-                }}
-              >
-                Login Here!
-              </Text>
-            </Pressable>
-          </View>
+          </Pressable>
         </View>
       </View>
     </LinearGradient>

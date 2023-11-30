@@ -10,7 +10,7 @@ import { Recovery } from ".";
 const Recover = ({navigation}) => {
     const [passwordShown, setPasswordShown] = useState(false);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.grey }}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
         <View >
 

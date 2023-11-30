@@ -12,7 +12,7 @@ const Register = ({navigation}) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.grey}}>
       <View style={{ flex: 1, marginHorizontal: 22 }}>
       <View >
 
@@ -29,8 +29,8 @@ const Register = ({navigation}) => {
   
   <Text
     style={{
-      fontSize: 20,
-      fontWeight: "extrabold",
+      fontSize: 30,
+      fontWeight: "bold",
       marginVertical: 12,
       marginHorizontal: 85,
       color: COLORS.black,
@@ -249,13 +249,7 @@ const Register = ({navigation}) => {
             }}
           >
            
-            <Text
-              style={{
-                fontSize: 16,
-              }}
-            >
-              Or Sign up with
-            </Text>
+    
             
 
             <View
@@ -265,101 +259,19 @@ const Register = ({navigation}) => {
                 marginTop: 10
               }}
             >
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/facebook.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
+            
 
-                <Text>Facebook</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/google.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Google</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/discord.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Discord</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    marginVertical: 22
-                }}>
+              
+            
+            
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Already have an account?</Text>
                     <Pressable
                         onPress={() => navigation.navigate("Login")}
                     >
                         <Text style={{
                             fontSize: 16,
-                            color: COLORS.primary,
-                            fontWeight: "bold",
+                            color: COLORS.orange,
+                            fontWeight: "extrabold",
                             marginLeft: 6
                         }}>Login</Text>
                     </Pressable>

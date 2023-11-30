@@ -12,8 +12,8 @@ const Login = ({navigation}) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <View style={{ flex: 1, marginHorizontal: 22 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.grey}}>
+      <View style={{ flex: 1, marginHorizontal: 20 }}>
       <View >
 
 <View style={{flexDirection: 'row'}} >
@@ -205,9 +205,9 @@ const Login = ({navigation}) => {
                     >
                         <Text style={{
                             fontSize: 16,
-                            color: COLORS.primary,
-                            fontWeight: "bold",
-                            marginLeft: 6
+                            color: COLORS.orange,
+                            fontWeight: "extrabold",
+                            marginLeft: 6 
                         }}>Click Here</Text>
                     </Pressable>
                 </View>
@@ -233,6 +233,8 @@ const Login = ({navigation}) => {
             <Text
               style={{
                 fontSize: 16,
+                color: COLORS.black,
+                fontWeight:"extrabold",
               }}
             >
               Or Sign in with
@@ -246,93 +248,11 @@ const Login = ({navigation}) => {
                 marginTop: 20
               }}
             >
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/facebook.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Facebook</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/google.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Google</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/discord.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Discord</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    marginVertical: 22
-                }}>
+            
+      
+        
+    
+            
                     <Text style={{ fontSize: 16, color: COLORS.black }}>Don't have an account?</Text>
                     <Pressable
                         onPress={() => navigation.navigate("Register")}
@@ -340,9 +260,9 @@ const Login = ({navigation}) => {
                         <Text style={{
                             fontSize: 16,
                             color: COLORS.primary,
-                            fontWeight: "bold",
+                            fontWeight: "extrabold",
                             marginLeft: 6
-                        }}>Register Here</Text>
+                        }}>Register Here</Text> 
                     </Pressable>
                 </View>
 
