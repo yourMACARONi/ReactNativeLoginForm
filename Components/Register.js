@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from "../Constants/colors";
@@ -7,12 +7,54 @@ import { useState } from "react";
 import Checkbox from "expo-checkbox";
 import Button from "../Buttons/Button";
 import { Pressable } from "react-native";
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string()
+  .email('Invalid email')
+  .required('Enter valid email address'),
+  username: Yup.string()
+    .min(2, 'Too Short!')
+    .max(20, 'Too Long!')
+    .required('Enter valid username'),
+  password: Yup.string()
+    .min(8)
+    .required('Enter your password')
+    .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/, 
+    'Must contain minimum 8 characters, atlease one uppercase letter, a number and special chaaracter'),
+  confirmPassword: Yup.string()
+    .min(8)
+    .oneOf([Yup.ref('password')], 'Password do not match')
+    .required('Re-Enter your password')
+
+  
+});
+
+
+
+
 
 const Register = ({navigation}) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+
+<Formik initialValues={{
+  email: '',
+  username: '',
+  password: '',
+  confirmPassword: '',
+}}
+validationSchema={SignupSchema}
+
+onSubmit={ async (values) => {
+  test(JSON.stringify(values), navigation)
+}}
+>
+
+{({values, errors, touched, handleChange, setFieldTouched, isValid, handleSubmit}) => (
       <View style={{ flex: 1, marginHorizontal: 22 }}>
       <View >
 
@@ -73,11 +115,17 @@ const Register = ({navigation}) => {
                 placeholder="Enter your email address"
                 placeholderTextColor={COLORS.black}
                 keyboardType="email-address"
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={() => setFieldTouched('email')}
                 style={{
                   width: "100%",
                 }}
               />
             </View>
+            {touched.email && errors.email && (
+                <Text style={{color:'red'}} > {errors.email}</Text>
+              )}
           </View>
 
           <View
@@ -111,12 +159,18 @@ const Register = ({navigation}) => {
               <TextInput
                 placeholder="Enter your username"
                 placeholderTextColor={COLORS.black}
-                keyboardType="email-address"
+                keyboardType="username"
+                value={values.username}
+                onChangeText={handleChange('username')}
+                onBlur={() => setFieldTouched('username')}
                 style={{
                   width: "100%",
                 }}
               />
             </View>
+            {touched.username && errors.username && (
+                <Text style={{color:'red'}} > {errors.username}</Text>
+              )}
           </View>
           </View>
 
@@ -149,6 +203,9 @@ const Register = ({navigation}) => {
                 placeholder="Enter your password"
                 placeholderTextColor={COLORS.black}
                 secureTextEntry={!passwordShown}
+                value={values.password}
+                onChangeText={handleChange('password')}
+                onBlur={() => setFieldTouched('password')}
                 style={{
                   width: "100%",
                 }}
@@ -167,6 +224,9 @@ const Register = ({navigation}) => {
                 )}
               </TouchableOpacity>
             </View>
+            {touched.password && errors.password && (
+                <Text style={{color:'red'}} > {errors.password}</Text>
+              )}
           </View>
 
           <View style={{ marginBottom: 1 }}>
@@ -196,6 +256,9 @@ const Register = ({navigation}) => {
                 placeholder="Re-Enter your password"
                 placeholderTextColor={COLORS.black}
                 secureTextEntry={!passwordShown}
+                value={values.confirmPassword}
+                onChangeText={handleChange('confirmPassword')}
+                onBlur={() => setFieldTouched('confirmPassword')}
                 style={{
                   width: "100%",
                 }}
@@ -214,6 +277,9 @@ const Register = ({navigation}) => {
                 )}
               </TouchableOpacity>
             </View>
+            {touched.confirmPassword && errors.confirmPassword && (
+                <Text style={{color:'red'}} > {errors.confirmPassword}</Text>
+              )}
           </View>
 
           <View
@@ -231,7 +297,7 @@ const Register = ({navigation}) => {
             <Text>I agree to the terms and conditions</Text>
           </View>
 
-          <Button
+          <Button onPress={handleSubmit}
             title="Sign Up"
             filled
             style={{
@@ -240,112 +306,6 @@ const Register = ({navigation}) => {
             }}
           />
 
-          <View
-            style={{
-              flexDirection: "column",
-              alignItems: "center",
-              marginVertical: 20,
-              marginTop: 10
-            }}
-          >
-           
-            <Text
-              style={{
-                fontSize: 16,
-              }}
-            >
-              Or Sign up with
-            </Text>
-            
-
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                marginTop: 10
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/facebook.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Facebook</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/google.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Google</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => console.log("Pressed")}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
-                  height: 52,
-                  borderWidth: 1,
-                  borderColor: COLORS.grey,
-                  marginRight: 4,
-                  borderRadius: 10,
-                }}
-              >
-                <Image
-                  source={require("../assets/discord.png")}
-                  style={{
-                    height: 36,
-                    width: 36,
-                    marginRight: 8,
-                  }}
-                  resizeMode="contain"
-                />
-
-                <Text>Discord</Text>
-              </TouchableOpacity>
-            </View>
 
             <View style={{
                     flexDirection: "row",
@@ -368,7 +328,9 @@ const Register = ({navigation}) => {
           </View>
         </View>
         
-      </View>
+     
+       )}
+       </Formik>
     </SafeAreaView>
   );
 };

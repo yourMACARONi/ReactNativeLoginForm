@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from "../Constants/colors";
@@ -36,9 +36,13 @@ const Recover = ({navigation}) => {
           >
             Account Recovery
           </Text>
+          
         </View>
 
         </View>
+        <Text style={{fontSize:15}} >
+            To recover your account, please enter your email address.
+          </Text>
         <View
           style={{
             marginBottom: 1,
@@ -52,7 +56,7 @@ const Recover = ({navigation}) => {
                 marginVertical: 8,
               }}
             >
-              Email address
+              Recovery Email
             </Text>
 
             <View
@@ -81,7 +85,7 @@ const Recover = ({navigation}) => {
           
            
 
-            <View
+            {/* <View
               style={{
                 width: "100%",
                 height: 48,
@@ -114,12 +118,12 @@ const Recover = ({navigation}) => {
                   <Ionicons name="eye" size={24} color={COLORS.black} />
                 )}
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
 
           <Button
-            onPress={() => console.log("Pressed1")}
-            title="Recover Account"
+            onPress={() => Alert.alert("Check your email")}
+            title="Submit"
             filled
             style={{
               marginTop: 18,
