@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity,Alert } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from "../Constants/colors";
@@ -11,10 +11,9 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const SigninSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(2, "Too Short!")
-    .max(20, "Too Long!")
-    .required("Enter valid username"),
+  email: Yup.string()
+  .email('Invalid email')
+  .required('Enter valid email address'),
   password: Yup.string()
     .min(8)
     .required("Enter your password")
@@ -28,21 +27,26 @@ const showToast = (message = "Something went wrong") => {
   ToastAndroid.show(message, 3000);
 };
 
-const handleLogin = async (values) => {
-  try {
-    console.debug(values);
+async function test(credentials, navigation) {
+  const response =  await fetch('http://192.168.8.162:8000/api/login', {method: 'POST', headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+  }, body: credentials
+})   
+  
 
-    const url = "url link here";
-    const result = await fetchServices.postData(url, values);
-    if (result.message != null) {
-      showToast(result?.message);
-    } else {
-      navigation.navigate("Home");
-    }
-  } catch (e) {
-    console.debug(e.toString());
+
+  const data = await response.json()
+
+  console.log(data)
+
+  if(response.status == 200) {
+
+       return (navigation.replace('Home'))
   }
-};
+
+  if(response.status == 404) return Alert.alert(data.message);
+}
 
 const Login = ({ navigation }) => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -51,12 +55,13 @@ const Login = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <Formik
         initialValues={{
-          username: "",
+          email: "",
           password: "",
         }}
-        onSubmit={async (values) => {
-          await handleLogin(values);
-        }}
+        onSubmit={ async (values) => {
+          console.log(values)
+          test(JSON.stringify(values), navigation)
+     }}
         validationSchema={SigninSchema}
       >
         {({
@@ -106,7 +111,7 @@ const Login = ({ navigation }) => {
                     marginVertical: 8,
                   }}
                 >
-                  Username
+                  email
                 </Text>
 
                 <View
@@ -122,19 +127,19 @@ const Login = ({ navigation }) => {
                   }}
                 >
                   <TextInput
-                    placeholder="Enter your username"
+                    placeholder="Enter your email"
                     placeholderTextColor={COLORS.black}
-                    label={"username"}
-                    value={values.username}
-                    onChangeText={handleChange("username")}
-                    onBlur={() => setFieldTouched("username")}
+                    label={"email"}
+                    value={values.email}
+                    onChangeText={handleChange("email")}
+                    onBlur={() => setFieldTouched("email")}
                     style={{
                       width: "100%",
                     }}
                   />
                 </View>
-                {touched.username && errors.username && (
-                  <Text style={{ color: "red" }}> {errors.username}</Text>
+                {touched.email && errors.email && (
+                  <Text style={{ color: "red" }}> {errors.email}</Text>
                 )}
               </View>
             </View>
@@ -233,7 +238,7 @@ const Login = ({ navigation }) => {
             </View>
 
             <Button
-              onPress={handleLogin}
+              onPress={handleSubmit}
               loading={isSubmitting}
               disabled={isSubmitting}
               title="Sign In"

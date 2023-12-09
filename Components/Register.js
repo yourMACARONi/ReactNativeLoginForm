@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid, Alert } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from "../Constants/colors";
@@ -14,10 +14,10 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
   .email('Invalid email')
   .required('Enter valid email address'),
-  username: Yup.string()
+  name: Yup.string()
     .min(2, 'Too Short!')
     .max(20, 'Too Long!')
-    .required('Enter valid username'),
+    .required('Enter valid name'),
   password: Yup.string()
     .min(8)
     .required('Enter your password')
@@ -32,7 +32,31 @@ const SignupSchema = Yup.object().shape({
 });
 
 
+const showToast = (message = "Something went wrong") => {
+  ToastAndroid.show(message, 3000);
+};
 
+async function test(credentials, navigation) {
+  const response =  await fetch('http://192.168.8.162:8000/api/register', {method: 'POST', headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+  }, body: credentials
+})   
+  
+
+
+  const data = await response.json()
+
+  console.log(data)
+
+  if(response.status == 200) {
+
+       Alert.alert("User has been created", data.message)
+       return (navigation.replace('Login'))
+  }
+
+  if(response.status == 404) return Alert.alert(data.message);
+}
 
 
 const Register = ({navigation}) => {
@@ -43,13 +67,14 @@ const Register = ({navigation}) => {
 
 <Formik initialValues={{
   email: '',
-  username: '',
+  name: '',
   password: '',
   confirmPassword: '',
 }}
 validationSchema={SignupSchema}
 
 onSubmit={ async (values) => {
+  console.log(values)
   test(JSON.stringify(values), navigation)
 }}
 >
@@ -114,7 +139,7 @@ onSubmit={ async (values) => {
               <TextInput
                 placeholder="Enter your email address"
                 placeholderTextColor={COLORS.black}
-                keyboardType="email-address"
+               
                 value={values.email}
                 onChangeText={handleChange('email')}
                 onBlur={() => setFieldTouched('email')}
@@ -141,7 +166,7 @@ onSubmit={ async (values) => {
                 marginVertical: 8,
               }}
             >
-              Username
+              Name
             </Text>
 
             <View
@@ -157,19 +182,19 @@ onSubmit={ async (values) => {
               }}
             >
               <TextInput
-                placeholder="Enter your username"
+                placeholder="Enter your name"
                 placeholderTextColor={COLORS.black}
-                keyboardType="username"
-                value={values.username}
-                onChangeText={handleChange('username')}
-                onBlur={() => setFieldTouched('username')}
+               
+                value={values.name}
+                onChangeText={handleChange('name')}
+                onBlur={() => setFieldTouched('name')}
                 style={{
                   width: "100%",
                 }}
               />
             </View>
-            {touched.username && errors.username && (
-                <Text style={{color:'red'}} > {errors.username}</Text>
+            {touched.name && errors.name && (
+                <Text style={{color:'red'}} > {errors.name}</Text>
               )}
           </View>
           </View>
